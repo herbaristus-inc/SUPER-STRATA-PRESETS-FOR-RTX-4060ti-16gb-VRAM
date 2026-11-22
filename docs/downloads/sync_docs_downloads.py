@@ -29,6 +29,8 @@ FILES = [
     ROOT / "MODEL.md",
     ROOT / "docs" / "RECOVERY.md",
     ROOT / "verify.ps1",
+    ROOT / "assets" / "youtube-thumbnail.png",
+    ROOT / "assets" / "youtube-thumbnail.jpg",
 ]
 FILES += sorted((ROOT / "results").glob("*.jsonl"))
 
