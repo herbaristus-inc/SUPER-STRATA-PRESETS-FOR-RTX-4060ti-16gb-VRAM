@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Strata — RTX 4060 Ti 16 GB + 64 GB DDR5 | 2,100 t/s prefill</title>
+<title>Strata — RTX 4060 Ti 16 GB + 64 GB DDR5 | 2,100 t/s prefill on the 512k preset</title>
 <style>
   :root{
     --bg:#0a0d12; --panel:#111820; --card:#151d27; --line:#26313d;
@@ -68,8 +68,8 @@
     <a class="btn ghost" href="#curves">See the curves</a>
   </div>
   <div class="stats">
-    <div class="stat"><div class="n">2,105</div><div class="l">peak prefill t/s @ 40k</div></div>
-    <div class="stat"><div class="n">2,100</div><div class="l">median prefill t/s @ 40k</div></div>
+    <div class="stat"><div class="n">2,105</div><div class="l"><b>512k preset</b> · peak prefill t/s @ 40k</div></div>
+    <div class="stat"><div class="n">2,100</div><div class="l"><b>512k preset</b> · median prefill t/s @ 40k</div></div>
     <div class="stat"><div class="n">1M</div><div class="l">tokens, no break</div></div>
     <div class="stat"><div class="n">1×</div><div class="l">RTX 4060 Ti 16 GB</div></div>
   </div>
@@ -77,7 +77,7 @@
 
 <section id="presets"><div class="wrap">
   <h2>The real monitor, not a slide</h2>
-  <p class="lead">Strata's own panel: 512K context, engine 0.1.62, 2,077 t/s average and 2,105 peak across three fresh 40k requests. 14.7/16 GB VRAM used, 3,968 experts cached.</p>
+  <p class="lead">Strata's own panel on the <b>512k preset</b>: 512K context, engine 0.1.62, 2,077 t/s average and 2,105 peak across three fresh 40k requests. 14.7/16 GB VRAM used, 3,968 experts cached. The 1M preset has its own lower curve below.</p>
   <div class="shot"><img src="strata-monitor-512k.png" alt="Strata monitor showing 2077 t/s prefill average and 2105 peak on a 4060 Ti"><figcaption>Strata Monitor — preset <code>strata-512k-routed</code>, three fresh 40,989-token prompts.</figcaption></div>
 </div></section>
 
@@ -89,7 +89,7 @@
     <figure><img src="ramp-1m.svg" alt="1M h4 prefill curve"><figcaption><b>1M h4</b> — 1,686 t/s @40k → 1,254 t/s @1M</figcaption></figure>
   </div>
   <div class="cards" style="margin-top:22px">
-    <div class="card"><h3>strata-512k-routed</h3><p>524,288-token window. ring512 + routed stream. The speed champion.</p><span class="tag">2,100 t/s</span><span class="tag">512K</span></div>
+    <div class="card"><h3>strata-512k-routed</h3><p>524,288-token window. ring512 + routed stream. The speed champion — <b>2,100 t/s belongs to this preset</b>, not the 1M one.</p><span class="tag">2,100 t/s @40k</span><span class="tag">512K</span></div>
     <div class="card"><h3>strata-1m-h4</h3><p>1,048,576-token window. Tail-loan 0 + headroom 4 GiB. The capacity champion.</p><span class="tag">1,254 t/s</span><span class="tag">1M</span></div>
     <div class="card"><h3>Download everything</h3><p>Templates with path placeholders, a renderer, the realistic corpus benchmark and every raw JSONL.</p><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets/tree/main/presets">presets ↗</a> · <a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets/tree/main/results">results ↗</a></div>
   </div>
@@ -100,7 +100,7 @@
   <p class="lead">This is not a GPU-only trick. The 125B expert set lives in pinned system memory; VRAM is a hot cache. Replace the RAM and the numbers disappear.</p>
   <div class="warn"><b>Required system:</b> RTX 4060 Ti 16 GB <u>plus 64 GB DDR5 dual channel</u>. With 32 GB the IQ3_S weights spill to the SSD tier and none of these speeds are reachable. The <b>iGPU is the primary display adapter</b> — browsers, Electron and desktop apps are pinned to it via <code>UserGpuPreferences</code>, leaving the whole 4060 Ti for Strata. Engine and Control 0.1.62, DFlash2 draft pack, KV int8, vision on CPU, abliteração on, temperature 1.</div>
   <table style="margin-top:26px">
-    <tr><th>Measure</th><th>512k routed</th><th>1M h4</th></tr>
+    <tr><th>Measure</th><th>512k routed <span style="color:#3fb950">(the 2,100 t/s preset)</span></th><th>1M h4 <span style="color:#39c5cf">(capacity preset)</span></th></tr>
     <tr><td>40k</td><td class="num">2,100.5 t/s</td><td class="num">1,686.4 t/s</td></tr>
     <tr><td>200–263k</td><td class="num">1,935.8 t/s</td><td class="num">1,767.8 t/s</td></tr>
     <tr><td>500k</td><td class="num">1,647.7 t/s</td><td class="num">1,573.0 t/s</td></tr>
