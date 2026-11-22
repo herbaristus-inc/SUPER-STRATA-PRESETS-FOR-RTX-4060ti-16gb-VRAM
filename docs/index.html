@@ -31,6 +31,9 @@
   .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
   .stat .n{font-size:30px;font-weight:800;color:var(--green);letter-spacing:-.03em}
   .stat .l{color:var(--dim);font-size:13px;margin-top:4px}
+  .stat.cyan .n{color:var(--cyan)}
+  .stat.cyan{border-color:#1f4e56}
+  .stat-row-label{color:var(--dim);font-size:12px;letter-spacing:.15em;text-transform:uppercase;margin:26px 0 10px}
   section{padding:54px 0;border-top:1px solid var(--line)}
   h2{font-size:30px;letter-spacing:-.03em;margin:0 0 8px}
   .lead{color:var(--dim);max-width:760px;margin:0 0 28px}
@@ -67,11 +70,19 @@
     <a class="btn" href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">Get the presets</a>
     <a class="btn ghost" href="#curves">See the curves</a>
   </div>
+  <div class="stat-row-label">512k speed preset — prefill t/s @ 40k</div>
   <div class="stats">
     <div class="stat"><div class="n">2,105</div><div class="l"><b>512k preset</b> · peak prefill t/s @ 40k</div></div>
     <div class="stat"><div class="n">2,100</div><div class="l"><b>512k preset</b> · median prefill t/s @ 40k</div></div>
-    <div class="stat"><div class="n">1M</div><div class="l">tokens, no break</div></div>
-    <div class="stat"><div class="n">1×</div><div class="l">RTX 4060 Ti 16 GB</div></div>
+    <div class="stat"><div class="n">1M</div><div class="l"><b>512k preset</b> · context window</div></div>
+    <div class="stat"><div class="n">1×</div><div class="l">RTX 4060 Ti 16 GB + 64 GB DDR5</div></div>
+  </div>
+  <div class="stat-row-label">1M capacity preset — prefill t/s</div>
+  <div class="stats">
+    <div class="stat cyan"><div class="n">1,768</div><div class="l"><b>1M preset</b> · peak prefill t/s @ 256k</div></div>
+    <div class="stat cyan"><div class="n">1,254</div><div class="l"><b>1M preset</b> · prefill t/s @ 1,000,807 tokens</div></div>
+    <div class="stat cyan"><div class="n">1M</div><div class="l"><b>1M preset</b> · full prompt, zero breaks</div></div>
+    <div class="stat cyan"><div class="n">0</div><div class="l"><b>1M preset</b> · errors across the ramp</div></div>
   </div>
 </div>
 
