@@ -6,7 +6,7 @@
 
 > *512K context is a working floor, not an expensive dream.*
 
-**Qwen3.8 Flash Next IQ3_S (ISTA-DASLab), 125B MoE** on one RTX 4060 Ti 16 GB **and 64 GB DDR5**. The
+**Qwen3.8 Flash Next IQ3_S (ISTA-DASLab), 125B MoE** on one RTX 4060 Ti 16 GB — NVIDIA's weakest 16 GB desktop GPU — **and 64 GB DDR5**. The
 **512k speed preset** hits ~2,100 t/s at 40k; the separate **1M preset** holds
 1,000,000 tokens without breaking. Two presets, two numbers — not both at 2,100.
 
