@@ -26,6 +26,9 @@ FILES = [
     ROOT / "docs" / "BOOT-ENV.md",
     ROOT / "results" / "README.md",
     ROOT / "tools" / "sync_docs_downloads.py",
+    ROOT / "MODEL.md",
+    ROOT / "docs" / "RECOVERY.md",
+    ROOT / "verify.ps1",
 ]
 FILES += sorted((ROOT / "results").glob("*.jsonl"))
 

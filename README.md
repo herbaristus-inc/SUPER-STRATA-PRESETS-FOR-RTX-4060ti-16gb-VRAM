@@ -13,7 +13,7 @@
 [![KV int8](https://img.shields.io/badge/KV-int8-e3b341)](presets/)
 [![license MIT](https://img.shields.io/badge/license-MIT-8b949e)](LICENSE)
 
-**[Live page](docs/index.html)** · **[Downloads](#downloads)** · **[Presets](presets/)** · **[Launchers](launchers/)** · **[Raw curves](results/)** · **[Pitfalls](PITFALLS.md)** · **[Related numbers](RELATED.md)** · **[Community results](COMMUNITY.md)** · **[Notes for Strata](STRATA-NOTES.md)**
+**[Live page](docs/index.html)** · **[Recovery](recovery/RECOVERY.md)** · **[Downloads](#downloads)** · **[Presets](presets/)** · **[Launchers](launchers/)** · **[Raw curves](results/)** · **[Pitfalls](PITFALLS.md)** · **[Related numbers](RELATED.md)** · **[Community results](COMMUNITY.md)** · **[Notes for Strata](STRATA-NOTES.md)**
 
 <img src="assets/strata-monitor-512k.png" alt="Strata monitor on the 512k preset: 2077 t/s average, 2105 peak, 512K context, RTX 4060 Ti" width="900">
 
@@ -92,6 +92,11 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
   The pendrive ISO is **not included**: no verified image was available to ship.
 - **[`STRATA-NOTES.md`](STRATA-NOTES.md)** — engine 0.1.62 / Control 0.1.62 findings and
   suggested upstream changes, 100% tied to the two presets below.
+- **[`boot-unlock/`](boot-unlock/)** — ~81 MB unlocker payload with per-file SHA-256 and a
+  script that rebuilds the pendrive from a blank USB stick.
+- **[`recovery/RECOVERY.md`](recovery/RECOVERY.md)** + **[`verify.ps1`](verify.ps1)** —
+  rebuild the whole stack after a clean Windows install; agent/API checklist included.
+- **[`MODEL.md`](MODEL.md)** — why ISTA-DASLab GSQ-RCO IQ3_S, the near-BF16 quant.
 
 ## What is in this repo
 
@@ -110,7 +115,7 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
 - **[`COMMUNITY.md`](COMMUNITY.md)** — bring your own GPU: result template and honest expectations.
 - **[`docs/index.html`](docs/index.html)** — the landing page, ready for GitHub Pages.
 
-No model weights, no draft pack, no third-party unlocker ISO. Those keep their own licenses.
+No model weights or draft pack — those keep their own licenses. The unlocker payload IS included, with hashes, because it is the recovery path.
 
 ---
 

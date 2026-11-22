@@ -60,7 +60,7 @@
 <body>
 <header><div class="wrap">
   <div class="brand">Strata<b>/</b>4060Ti</div>
-  <nav><a href="#presets">presets</a><a href="#curves">curves</a><a href="#decode">decode</a><a href="#downloads">downloads</a><a href="#community">community</a><a href="#method">method</a><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">GitHub ↗</a></nav>
+  <nav><a href="#presets">presets</a><a href="#curves">curves</a><a href="#decode">decode</a><a href="#downloads">downloads</a><a href="#recovery">recovery</a><a href="#community">community</a><a href="#method">method</a><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">GitHub ↗</a></nav>
 </div></header>
 
 <div class="wrap hero">
@@ -135,7 +135,17 @@
     <div class="card"><h3>Windows launchers</h3><p>`.bat` templates with no paths baked in. Standard practice for local Windows LLM repos — and useful here because the 1M boot order matters.</p><a href="downloads/run-512k-routed.bat.template">512k .bat ↗</a><a href="downloads/run-1m-h4.bat.template">1M .bat ↗</a></div>
     <div class="card"><h3>Raw evidence</h3><p>Curated shipped-preset rows, a log guide, the renderer, the realistic benchmark, and notes for Strata 0.1.62.</p><a href="downloads/RESULTS-README.md">results ↗</a><a href="downloads/render_preset.py">tools ↗</a><a href="STRATA-NOTES.md">Strata notes ↗</a></div>
   </div>
-  <p class="lead" style="margin-top:22px">The boot environment is documented in <a href="BOOT-ENV.md">BOOT-ENV.md</a>: nv-uefi-unlocker v2.1.8, VRAM OC 10827, iGPU as primary and 64 GB DDR5. <b>The pendrive ISO is not shipped</b> — no verified image was available, and a third-party unlocker image needs its own licensing review.</p>
+  <p class="lead" style="margin-top:22px">The boot environment is documented in <a href="BOOT-ENV.md">BOOT-ENV.md</a>: nv-uefi-unlocker v2.1.8, VRAM OC 10827, iGPU as primary and 64 GB DDR5. No 16 GB image is shipped — the unlocker is only ~81 MB, and <a href="boot-unlock/README.md">its payload</a> is here with per-file SHA-256.</p>
+</div></section>
+
+<section id="recovery"><div class="wrap">
+  <h2>Lose the machine. Rebuild it from this repo.</h2>
+  <p class="lead">This is the disaster-recovery path: a clean Windows install, a blank USB stick and an agent with shell access. Every file is here, hashed, from the unlocker payload to the presets and the realistic benchmark.</p>
+  <div class="cards">
+    <div class="card"><h3>1. Rebuild the pendrive</h3><p>~81 MB of payload, a .bat launcher and a script that wipes one removable disk and verifies every byte after copying.</p><a href="boot-unlock/README.md">boot-unlock ↗</a><a href="boot-unlock/SHA256SUMS.md">hashes ↗</a></div>
+    <div class="card"><h3>2. Recover the full stack</h3><p>Step-by-step from clean Windows to a validated 40k run, with a pass/fail checklist an agent can execute.</p><a href="RECOVERY.md">RECOVERY.md ↗</a><a href="verify.ps1">verify.ps1 ↗</a></div>
+    <div class="card"><h3>3. Why this quant</h3><p>Qwen3.8-Flash-Next ISTA-DASLab GSQ-RCO IQ3_S — per-tensor precision search, near-BF16 parity at 83.6 GB.</p><a href="MODEL.md">MODEL.md ↗</a></div>
+  </div>
 </div></section>
 
 <section id="community"><div class="wrap">
