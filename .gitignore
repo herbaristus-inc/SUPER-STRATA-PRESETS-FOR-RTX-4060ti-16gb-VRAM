@@ -2,6 +2,7 @@
 strata-*.json
 *.log
 *.bat
+!boot-unlock/MAKE-PENDRIVE.bat
 
 # Local benchmark output
 my-run.jsonl
