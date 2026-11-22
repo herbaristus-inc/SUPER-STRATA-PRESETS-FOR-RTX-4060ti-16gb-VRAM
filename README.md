@@ -1,11 +1,12 @@
 <div align="center">
 
-# Strata / 4060 Ti
+# Strata / RTX 4060 Ti 16 GB + 64 GB DDR5
 
 ### **Prefill that makes upgrades optional.**
 
-One RTX 4060 Ti 16 GB + 64 GB DDR5 running Qwen3.8-Flash-Next 125B MoE at
-**~2,100 t/s prefill**, with a **1,000,000-token** window that does not break.
+Qwen3.8-Flash-Next 125B MoE on one RTX 4060 Ti 16 GB **and 64 GB DDR5**. The
+**512k speed preset** hits ~2,100 t/s at 40k; the separate **1M preset** holds
+1,000,000 tokens without breaking. Two presets, two numbers — not both at 2,100.
 
 [![engine 0.1.62](https://img.shields.io/badge/engine-0.1.62-3fb950)](https://github.com/Niko1221/Strata)
 [![Control 0.1.62](https://img.shields.io/badge/control-0.1.62-39c5cf)](https://github.com/Niko1221/Strata)
@@ -52,6 +53,7 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
 | Part | Value |
 |---|---|
 | GPU | RTX 4060 Ti 16 GB (one card, VRAM OC via `Strata VRAM OC 10827.bat`) |
+| Other apps | **iGPU is primary.** Browsers, Electron and desktop apps are pinned to the integrated GPU via `HKCU\Software\Microsoft\DirectX\UserGpuPreferences` (`GpuPreference=1`). The 4060 Ti's VRAM belongs to Strata alone — that is part of how 14.7/16 GB stays available for experts. |
 | System RAM | **64 GB DDR5 — required** |
 | Model | Qwen3.8-Flash-Next GSQ-RCO IQ3_S, 125B MoE / 6B active |
 | Draft | DFlash2 tuned pack `qwen3.8-flash-next-dflash2.strata1.q4_0-selq4.pack` |

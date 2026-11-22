@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Strata 4060 Ti — 2,100 t/s prefill on one consumer GPU</title>
+<title>Strata — RTX 4060 Ti 16 GB + 64 GB DDR5 | 2,100 t/s prefill</title>
 <style>
   :root{
     --bg:#0a0d12; --panel:#111820; --card:#151d27; --line:#26313d;
@@ -60,9 +60,9 @@
 </div></header>
 
 <div class="wrap hero">
-  <div class="eyebrow">one GPU · 64 GB RAM · 125B MoE</div>
+  <div class="eyebrow">RTX 4060 Ti 16 GB + 64 GB DDR5 · 125B MoE</div>
   <h1>Prefill that makes <span>upgrades optional.</span></h1>
-  <p class="sub">Two tuned Strata presets for Qwen3.8-Flash-Next IQ3_S on a single RTX 4060 Ti 16 GB. Up to <b>2,100 t/s</b> at 40k, and a full <b>1,000,000-token</b> prompt that does not break. Configs, raw curves and the pitfalls — all free.</p>
+  <p class="sub">Two tuned Strata presets for Qwen3.8-Flash-Next IQ3_S on one RTX 4060 Ti 16 GB <b>plus 64 GB DDR5</b>. The <b>512k speed preset</b> does <b>2,100 t/s</b> at 40k; the separate <b>1M preset</b> holds a full <b>1,000,000-token</b> prompt without breaking. Configs, raw curves and pitfalls — free.</p>
   <div class="cta">
     <a class="btn" href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">Get the presets</a>
     <a class="btn ghost" href="#curves">See the curves</a>
@@ -98,7 +98,7 @@
 <section id="method"><div class="wrap">
   <h2>The part people skip</h2>
   <p class="lead">This is not a GPU-only trick. The 125B expert set lives in pinned system memory; VRAM is a hot cache. Replace the RAM and the numbers disappear.</p>
-  <div class="warn"><b>Required system:</b> RTX 4060 Ti 16 GB <u>plus 64 GB DDR5 dual channel</u>. With 32 GB the IQ3_S weights spill to the SSD tier and none of these speeds are reachable. Engine and Control 0.1.62, DFlash2 draft pack, KV int8, vision on CPU, abliteração on, temperature 1.</div>
+  <div class="warn"><b>Required system:</b> RTX 4060 Ti 16 GB <u>plus 64 GB DDR5 dual channel</u>. With 32 GB the IQ3_S weights spill to the SSD tier and none of these speeds are reachable. The <b>iGPU is the primary display adapter</b> — browsers, Electron and desktop apps are pinned to it via <code>UserGpuPreferences</code>, leaving the whole 4060 Ti for Strata. Engine and Control 0.1.62, DFlash2 draft pack, KV int8, vision on CPU, abliteração on, temperature 1.</div>
   <table style="margin-top:26px">
     <tr><th>Measure</th><th>512k routed</th><th>1M h4</th></tr>
     <tr><td>40k</td><td class="num">2,100.5 t/s</td><td class="num">1,686.4 t/s</td></tr>
