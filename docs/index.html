@@ -59,7 +59,7 @@
 <body>
 <header><div class="wrap">
   <div class="brand">Strata<b>/</b>4060Ti</div>
-  <nav><a href="#presets">presets</a><a href="#curves">curves</a><a href="#method">method</a><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">GitHub ↗</a></nav>
+  <nav><a href="#presets">presets</a><a href="#curves">curves</a><a href="#decode">decode</a><a href="#method">method</a><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">GitHub ↗</a></nav>
 </div></header>
 
 <div class="wrap hero">
@@ -84,6 +84,13 @@
     <div class="stat cyan"><div class="n">1,254</div><div class="l"><b>1M preset</b> · prefill t/s @ 1,000,807 tokens</div></div>
     <div class="stat cyan"><div class="n">0</div><div class="l"><b>1M preset</b> · breaks across the full ramp</div></div>
   </div>
+  <div class="stat-row-label">Decode — short answers from the same runs</div>
+  <div class="stats">
+    <div class="stat"><div class="n">58.4</div><div class="l"><b>512k preset</b> · peak decode t/s @40k</div></div>
+    <div class="stat"><div class="n">53.3</div><div class="l"><b>512k preset</b> · median decode t/s @40k (n=3)</div></div>
+    <div class="stat cyan"><div class="n">34.8</div><div class="l"><b>1M preset</b> · decode t/s @256k</div></div>
+    <div class="stat cyan"><div class="n">33.3</div><div class="l"><b>1M preset</b> · decode t/s @1,000,807 tokens</div></div>
+  </div>
 </div>
 
 <section id="presets"><div class="wrap">
@@ -104,6 +111,18 @@
     <div class="card"><h3>strata-1m-h4</h3><p>1,048,576-token window. Tail-loan 0 + headroom 4 GiB. The capacity champion.</p><span class="tag">1,254 t/s</span><span class="tag">1M</span></div>
     <div class="card"><h3>Download everything</h3><p>Templates with path placeholders, a renderer, the realistic corpus benchmark and every raw JSONL.</p><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets/tree/main/presets">presets ↗</a> · <a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets/tree/main/results">results ↗</a></div>
   </div>
+</div></section>
+
+<section id="decode"><div class="wrap">
+  <h2>Decode — the other half of the run</h2>
+  <p class="lead">Same requests, same raw logs: generation speed alongside prefill. The benchmark client caps output at 64 tokens, so these are short-answer samples — not long-output decode records.</p>
+  <table>
+    <tr><th>Point</th><th>512k routed <span style="color:#3fb950">(speed preset)</span></th><th>1M h4 <span style="color:#39c5cf">(capacity preset)</span></th></tr>
+    <tr><td>40k · median (peak)</td><td class="num">53.3 (58.4) t/s · n=3</td><td class="num">32.2 t/s</td></tr>
+    <tr><td>256k</td><td>—</td><td class="num">34.8 t/s</td></tr>
+    <tr><td>1,000,807 tokens</td><td>—</td><td class="num">33.3 t/s</td></tr>
+  </table>
+  <p class="lead" style="margin-top:22px">Best short-answer decode seen during tuning: <b>73.4 t/s</b> on a pre-routed 40k OC variant — raw log in <code>results/calib-df2-20261120.jsonl</code>, <b>not</b> one of the two shipped presets. No decode record claim: these are 38–43-token answers, reported for context.</p>
 </div></section>
 
 <section id="method"><div class="wrap">

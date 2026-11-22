@@ -30,6 +30,19 @@
 | `strata-512k-routed` | 524,288 | **2,104.8 t/s** @ ~41k (median **2,100.5**) | 1,647.7 t/s @ 500k |
 | `strata-1m-h4` | 1,048,576 | **1,767.8 t/s** @ ~263k | **1,253.7 t/s** @ 1,000,807 tokens |
 
+### Decode, from the same runs
+
+| Point | `strata-512k-routed` | `strata-1m-h4` |
+|---|---:|---:|
+| 40k | **53.3 t/s median** (58.4 peak), n=3 | 32.2 t/s |
+| 256k | — | 34.8 t/s |
+| 1,000,807 tokens | — | 33.3 t/s |
+
+The benchmark client caps generation at 64 tokens and the runs emitted 38–43 tokens, so
+these are short-answer decode samples — reported for context, **not** a long-output decode
+record. The best short decode seen while tuning was **73.4 t/s** on a pre-routed 40k OC
+variant (`calib-df2-20261120.jsonl`), not one of the two shipped presets.
+
 <p align="center">
   <img src="assets/ramp-512k.svg" alt="512k routed prefill curve" width="48%">
   <img src="assets/ramp-1m.svg" alt="1M h4 prefill curve" width="48%">
