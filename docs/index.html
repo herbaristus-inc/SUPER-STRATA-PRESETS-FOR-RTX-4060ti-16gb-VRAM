@@ -45,6 +45,7 @@
   figure img{width:100%;display:block;border-radius:8px}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card a{display:inline-block;margin:4px 12px 0 0;font-weight:600}
   .card h3{margin:0 0 8px;font-size:18px}
   .card p{color:var(--dim);font-size:14px;margin:0 0 16px}
   .tag{display:inline-block;background:#1b2733;border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:12px;color:var(--dim);margin-right:6px}
@@ -59,7 +60,7 @@
 <body>
 <header><div class="wrap">
   <div class="brand">Strata<b>/</b>4060Ti</div>
-  <nav><a href="#presets">presets</a><a href="#curves">curves</a><a href="#decode">decode</a><a href="#method">method</a><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">GitHub ↗</a></nav>
+  <nav><a href="#presets">presets</a><a href="#curves">curves</a><a href="#decode">decode</a><a href="#downloads">downloads</a><a href="#community">community</a><a href="#method">method</a><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">GitHub ↗</a></nav>
 </div></header>
 
 <div class="wrap hero">
@@ -67,7 +68,7 @@
   <h1>Prefill that makes <span>upgrades optional.</span></h1>
   <p class="sub">Two tuned Strata presets for Qwen3.8-Flash-Next IQ3_S on one RTX 4060 Ti 16 GB <b>plus 64 GB DDR5</b>. The <b>512k speed preset</b> does <b>2,100 t/s</b> at 40k; the separate <b>1M preset</b> holds a full <b>1,000,000-token</b> prompt without breaking. Configs, raw curves and pitfalls — free.</p>
   <div class="cta">
-    <a class="btn" href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">Get the presets</a>
+    <a class="btn" href="#downloads">Get the presets</a>
     <a class="btn ghost" href="#curves">See the curves</a>
   </div>
   <div class="stat-row-label">512k speed preset — prefill t/s @ 40k</div>
@@ -109,20 +110,42 @@
   <div class="cards" style="margin-top:22px">
     <div class="card"><h3>strata-512k-routed</h3><p>524,288-token window. ring512 + routed stream. The speed champion — <b>2,100 t/s belongs to this preset</b>, not the 1M one.</p><span class="tag">2,100 t/s @40k</span><span class="tag">512K</span></div>
     <div class="card"><h3>strata-1m-h4</h3><p>1,048,576-token window. Tail-loan 0 + headroom 4 GiB. The capacity champion.</p><span class="tag">1,254 t/s</span><span class="tag">1M</span></div>
-    <div class="card"><h3>Download everything</h3><p>Templates with path placeholders, a renderer, the realistic corpus benchmark and every raw JSONL.</p><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets/tree/main/presets">presets ↗</a> · <a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets/tree/main/results">results ↗</a></div>
+    <div class="card"><h3>Download everything</h3><p>Curated presets with path placeholders, a renderer, the realistic corpus benchmark and the raw logs behind every figure here.</p><a href="downloads/strata-512k-routed.json.template">512k preset ↗</a> · <a href="downloads/strata-1m-h4.json.template">1M preset ↗</a> · <a href="downloads/shipped-512k-routed-40k.jsonl">raw results ↗</a></div>
   </div>
 </div></section>
 
 <section id="decode"><div class="wrap">
   <h2>Decode — the other half of the run</h2>
-  <p class="lead">Same requests, same raw logs: generation speed alongside prefill. The benchmark client caps output at 64 tokens, so these are short-answer samples — not long-output decode records.</p>
+  <p class="lead">Same requests, same raw logs: generation speed alongside prefill. The 40k benchmark used 38–43 generated tokens; the 512k long ramp logged 256. These are short-answer samples, not long-output decode records.</p>
   <table>
     <tr><th>Point</th><th>512k routed <span style="color:#3fb950">(speed preset)</span></th><th>1M h4 <span style="color:#39c5cf">(capacity preset)</span></th></tr>
     <tr><td>40k · median (peak)</td><td class="num">53.3 (58.4) t/s · n=3</td><td class="num">32.2 t/s</td></tr>
+    <tr><td>200k / 350k / 500k</td><td class="num">42.2 / 45.2 / 42.4 t/s</td><td>—</td></tr>
     <tr><td>256k</td><td>—</td><td class="num">34.8 t/s</td></tr>
     <tr><td>1,000,807 tokens</td><td>—</td><td class="num">33.3 t/s</td></tr>
   </table>
-  <p class="lead" style="margin-top:22px">Best short-answer decode seen during tuning: <b>73.4 t/s</b> on a pre-routed 40k OC variant — raw log in <code>results/calib-df2-20261120.jsonl</code>, <b>not</b> one of the two shipped presets. No decode record claim: these are 38–43-token answers, reported for context.</p>
+  <p class="lead" style="margin-top:22px">Every figure above comes from one of the <b>two shipped presets</b>. The Strata panel on the 512k preset reports <b>48.7 t/s average</b> and a <b>39.1–58.4 t/s</b> range across the three logged requests. No decode record claim: these are 38–43-token answers, reported for context.</p>
+</div></section>
+
+<section id="downloads"><div class="wrap">
+  <h2>Take the presets. Keep the receipts.</h2>
+  <p class="lead">Every number on this page comes from one of the two configs below. No personal paths, no weights, no mystery binaries.</p>
+  <div class="cards">
+    <div class="card"><h3>Both presets</h3><p>Two JSON templates for Control 0.1.62: speed at 512k, capacity at 1M.</p><a href="downloads/strata-512k-routed.json.template">512k routed ↗</a><a href="downloads/strata-1m-h4.json.template">1M h4 ↗</a></div>
+    <div class="card"><h3>Windows launchers</h3><p>`.bat` templates with no paths baked in. Standard practice for local Windows LLM repos — and useful here because the 1M boot order matters.</p><a href="downloads/run-512k-routed.bat.template">512k .bat ↗</a><a href="downloads/run-1m-h4.bat.template">1M .bat ↗</a></div>
+    <div class="card"><h3>Raw evidence</h3><p>Curated shipped-preset rows, a log guide, the renderer, the realistic benchmark, and notes for Strata 0.1.62.</p><a href="downloads/RESULTS-README.md">results ↗</a><a href="downloads/render_preset.py">tools ↗</a><a href="STRATA-NOTES.md">Strata notes ↗</a></div>
+  </div>
+  <p class="lead" style="margin-top:22px">The boot environment is documented in <a href="BOOT-ENV.md">BOOT-ENV.md</a>: nv-uefi-unlocker v2.1.8, VRAM OC 10827, iGPU as primary and 64 GB DDR5. <b>The pendrive ISO is not shipped</b> — no verified image was available, and a third-party unlocker image needs its own licensing review.</p>
+</div></section>
+
+<section id="community"><div class="wrap">
+  <h2>RTX 5080, 5070 Ti, 4070 Ti Super — your turn.</h2>
+  <p class="lead">The levers are Strata settings, not 4060 Ti magic. Try either preset on your 16 GB+ card and post the raw numbers. We want to see how much transfers — including where it does not.</p>
+  <div class="cards">
+    <div class="card"><h3>Pick a preset</h3><p>Start with 512k routed for speed. If your RAM and VRAM allow it, try 1M h4 for capacity.</p><a href="#downloads">Download ↗</a></div>
+    <div class="card"><h3>Report properly</h3><p>Fresh nonce-unique prompts, at least 3 runs, engine-reported token counts and medians. Boot details matter.</p><a href="COMMUNITY.md">Result template ↗</a></div>
+    <div class="card"><h3>64 GB still applies</h3><p>Below 64 GB the expert arena spills to SSD and the numbers collapse. Report your RAM so results stay comparable.</p><a href="BOOT-ENV.md">Environment ↗</a></div>
+  </div>
 </div></section>
 
 <section id="method"><div class="wrap">

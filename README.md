@@ -13,7 +13,7 @@
 [![KV int8](https://img.shields.io/badge/KV-int8-e3b341)](presets/)
 [![license MIT](https://img.shields.io/badge/license-MIT-8b949e)](LICENSE)
 
-**[Live page](docs/index.html)** · **[Presets](presets/)** · **[Raw curves](results/)** · **[Pitfalls](PITFALLS.md)** · **[Related numbers](RELATED.md)**
+**[Live page](docs/index.html)** · **[Downloads](#downloads)** · **[Presets](presets/)** · **[Launchers](launchers/)** · **[Raw curves](results/)** · **[Pitfalls](PITFALLS.md)** · **[Related numbers](RELATED.md)** · **[Community results](COMMUNITY.md)** · **[Notes for Strata](STRATA-NOTES.md)**
 
 <img src="assets/strata-monitor-512k.png" alt="Strata monitor on the 512k preset: 2077 t/s average, 2105 peak, 512K context, RTX 4060 Ti" width="900">
 
@@ -35,13 +35,15 @@
 | Point | `strata-512k-routed` | `strata-1m-h4` |
 |---|---:|---:|
 | 40k | **53.3 t/s median** (58.4 peak), n=3 | 32.2 t/s |
+| 200k / 350k / 500k | 42.2 / 45.2 / 42.4 t/s (256 gen) | — |
 | 256k | — | 34.8 t/s |
 | 1,000,807 tokens | — | 33.3 t/s |
 
-The benchmark client caps generation at 64 tokens and the runs emitted 38–43 tokens, so
+The 40k benchmark client capped generation at 64 tokens and the runs emitted 38–43 tokens, so
 these are short-answer decode samples — reported for context, **not** a long-output decode
-record. The best short decode seen while tuning was **73.4 t/s** on a pre-routed 40k OC
-variant (`calib-df2-20261120.jsonl`), not one of the two shipped presets.
+record. The Strata panel on the 512k preset shows **48.7 t/s average** and **39.1–58.4 t/s**
+min/max across the same three requests. Every figure here comes from one of the two shipped
+presets. See [`results/README.md`](results/README.md) for exactly which log backs each number.
 
 <p align="center">
   <img src="assets/ramp-512k.svg" alt="512k routed prefill curve" width="48%">
@@ -78,6 +80,19 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
 
 ---
 
+## Downloads
+
+- **[`presets/`](presets/)** — both champion configs as `.json.template`.
+- **[`launchers/`](launchers/)** — two Windows `.bat` templates, one per preset, with no
+  personal paths. Common practice for local Windows LLM projects; useful here because the
+  boot order is easy to get wrong. Rename `.template` to `.bat` after copying.
+- **[`results/`](results/)** — every raw JSONL: token counts, prefill, decode, TTFT, duration.
+- **[`tools/`](tools/)** — the renderer and the realistic prompt benchmark.
+- **[`docs/BOOT-ENV.md`](docs/BOOT-ENV.md)** — the boot environment, honestly documented.
+  The pendrive ISO is **not included**: no verified image was available to ship.
+- **[`STRATA-NOTES.md`](STRATA-NOTES.md)** — engine 0.1.62 / Control 0.1.62 findings and
+  suggested upstream changes, 100% tied to the two presets below.
+
 ## What is in this repo
 
 - **`presets/`** — both champion configs as `.json.template`. No personal paths: fill in
@@ -92,9 +107,10 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
 - **[`PITFALLS.md`](PITFALLS.md)** — the five discarded levers and the 1M crash that cost a
   day.
 - **[`RELATED.md`](RELATED.md)** — every public number I compared against, with links.
+- **[`COMMUNITY.md`](COMMUNITY.md)** — bring your own GPU: result template and honest expectations.
 - **[`docs/index.html`](docs/index.html)** — the landing page, ready for GitHub Pages.
 
-No model weights, no draft pack, no ISO. Those keep their own licenses.
+No model weights, no draft pack, no third-party unlocker ISO. Those keep their own licenses.
 
 ---
 
