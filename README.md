@@ -15,7 +15,7 @@ Qwen3.8-Flash-Next 125B MoE on one RTX 4060 Ti 16 GB **and 64 GB DDR5**. The
 
 **[Live page](docs/index.html)** · **[Presets](presets/)** · **[Raw curves](results/)** · **[Pitfalls](PITFALLS.md)** · **[Related numbers](RELATED.md)**
 
-<img src="assets/strata-monitor-512k.png" alt="Strata monitor: 2077 t/s average, 2105 peak, 512K context, RTX 4060 Ti" width="900">
+<img src="assets/strata-monitor-512k.png" alt="Strata monitor on the 512k preset: 2077 t/s average, 2105 peak, 512K context, RTX 4060 Ti" width="900">
 
 <sub>Strata's own monitor — <b>512k preset only</b>: 512K context, 2,077 t/s average, 2,105 peak, 14.7/16 GB VRAM. The 1M preset is a different, slower preset.</sub>
 
