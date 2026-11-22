@@ -14,6 +14,10 @@ discarded variants (ring512 plain, kv-grow, headroom 2, older engines and drafts
 and long generations) and are kept so the exploration is auditable. Do not quote numbers
 from them as if they belonged to either shipped preset.
 
+All project prose is in English. The raw JSONL logs and the benchmark prompt inside
+`tools/prefill_real_bench.py` are intentionally kept verbatim in Portuguese: they are the
+original evidence behind these measurements, and translating them would change the corpus.
+
 In particular:
 
 - **73.4 t/s** decode in `calib-df2-20261120.jsonl` is a pre-routed 40k OC tuning run.

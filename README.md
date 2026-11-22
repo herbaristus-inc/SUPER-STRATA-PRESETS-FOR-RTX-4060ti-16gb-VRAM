@@ -4,8 +4,7 @@
 
 ### **Prefill that makes upgrades optional.**
 
-> *512K context is a working floor, not an expensive dream.*  
-> <sub>“512k de contexto é piso de trabalho, não sonho caro.”</sub>
+> *512K context is a working floor, not an expensive dream.*
 
 **Qwen3.8 Flash Next IQ3_S (ISTA-DASLab), 125B MoE** on one RTX 4060 Ti 16 GB **and 64 GB DDR5**. The
 **512k speed preset** hits ~2,100 t/s at 40k; the separate **1M preset** holds
@@ -78,7 +77,7 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
 | Serving | Control 0.1.62 → engine 0.1.62, port 8080 |
 | KV | `int8`, `--kv-resident 32768` |
 | Vision | on, CPU tower (`vision.gpu: false`) |
-| Abliteração | `--control-vector-scaled` + speed projection, layers 4–44 |
+| Abliteration | `--control-vector-scaled` + speed projection, layers 4–44 |
 | Sampling | temperature 1, no `max_tokens` in preset |
 
 ---

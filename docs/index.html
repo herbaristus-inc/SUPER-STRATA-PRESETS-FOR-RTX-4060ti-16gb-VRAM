@@ -167,7 +167,7 @@
 <section id="method"><div class="wrap">
   <h2>The part people skip</h2>
   <p class="lead">This is not a GPU-only trick. The 125B expert set lives in pinned system memory; VRAM is a hot cache. Replace the RAM and the numbers disappear.</p>
-  <div class="warn"><b>Required system:</b> RTX 4060 Ti 16 GB <u>plus 64 GB DDR5 dual channel</u>. With 32 GB the IQ3_S weights spill to the SSD tier and none of these speeds are reachable. The <b>iGPU is the primary display adapter</b> — browsers, Electron and desktop apps are pinned to it via <code>UserGpuPreferences</code>, leaving the whole 4060 Ti for Strata. Engine and Control 0.1.62, DFlash2 draft pack, KV int8, vision on CPU, abliteração on, temperature 1.</div>
+  <div class="warn"><b>Required system:</b> RTX 4060 Ti 16 GB <u>plus 64 GB DDR5 dual channel</u>. With 32 GB the IQ3_S weights spill to the SSD tier and none of these speeds are reachable. The <b>iGPU is the primary display adapter</b> — browsers, Electron and desktop apps are pinned to it via <code>UserGpuPreferences</code>, leaving the whole 4060 Ti for Strata. Engine and Control 0.1.62, DFlash2 draft pack, KV int8, vision on CPU, abliteration on, temperature 1.</div>
   <table style="margin-top:26px">
     <tr><th>Measure</th><th>512k routed <span style="color:#3fb950">(the 2,100 t/s preset)</span></th><th>1M h4 <span style="color:#39c5cf">(capacity preset)</span></th></tr>
     <tr><td>40k</td><td class="num">2,100.5 t/s</td><td class="num">1,686.4 t/s</td></tr>
