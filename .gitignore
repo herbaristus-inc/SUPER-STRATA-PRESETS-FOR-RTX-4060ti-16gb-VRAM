@@ -1,0 +1,12 @@
+# Rendered presets with local paths — never commit these
+strata-*.json
+*.log
+*.bat
+
+# Local benchmark output
+my-run.jsonl
+calib-*.jsonl.bak
+
+# Python
+__pycache__/
+*.pyc
