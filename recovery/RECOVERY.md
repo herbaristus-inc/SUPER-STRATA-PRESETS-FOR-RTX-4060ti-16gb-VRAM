@@ -11,7 +11,7 @@ need their own storage decision. Everything else is reproducible from this repo.
 
 ```powershell
 git clone <THIS_REPO_URL>
-cd strata-4060ti-prefill-presets
+cd SUPER-STRATA-PRESETS-FOR-RTX-4060ti-16gb-VRAM
 git log -1 --oneline
 .\verify.ps1
 ```
