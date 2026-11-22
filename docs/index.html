@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Strata — RTX 4060 Ti 16 GB + 64 GB DDR5 | 2,100 t/s prefill on the 512k preset</title>
+<meta name="description" content="512K context is a working floor, not an expensive dream. Two tested Strata presets for one RTX 4060 Ti 16 GB plus 64 GB DDR5: ~2,100 t/s at 40k and a stable 1M window.">
+<meta property="og:title" content="Strata / RTX 4060 Ti 16 GB + 64 GB DDR5">
+<meta property="og:description" content="512K context is a working floor, not an expensive dream. Presets, raw curves and a recovery kit.">
+<meta property="og:image" content="https://raw.githubusercontent.com/herbaristus-inc/strata-4060ti-prefill-presets/main/docs/strata-monitor-512k.png">
 <style>
   :root{
     --bg:#0a0d12; --panel:#111820; --card:#151d27; --line:#26313d;
@@ -23,6 +27,7 @@
   h1{font-size:clamp(34px,6vw,62px);line-height:1.05;margin:22px 0 14px;letter-spacing:-.04em}
   h1 span{background:linear-gradient(90deg,var(--green),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
   .sub{color:var(--dim);max-width:720px;margin:0 auto 30px;font-size:18px}
+  .tagline{color:var(--green);font-size:15px;font-weight:700;letter-spacing:.02em;margin:-6px 0 16px}
   .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .btn{display:inline-block;background:var(--green);color:#06140a;padding:12px 22px;border-radius:8px;font-weight:700}
   .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
@@ -60,12 +65,13 @@
 <body>
 <header><div class="wrap">
   <div class="brand">Strata<b>/</b>4060Ti</div>
-  <nav><a href="#presets">presets</a><a href="#curves">curves</a><a href="#decode">decode</a><a href="#downloads">downloads</a><a href="#recovery">recovery</a><a href="#community">community</a><a href="#method">method</a><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">GitHub ↗</a></nav>
+  <nav><a href="#presets">presets</a><a href="#curves">curves</a><a href="#decode">decode</a><a href="#downloads">downloads</a><a href="#recovery">recovery</a><a href="#community">community</a><a href="#method">method</a><a href="https://github.com/herbaristus-inc/strata-4060ti-prefill-presets">GitHub ↗</a></nav>
 </div></header>
 
 <div class="wrap hero">
   <div class="eyebrow">RTX 4060 Ti 16 GB + 64 GB DDR5 · Qwen3.8 Flash Next IQ3_S ISTA-DASLab · 125B MoE</div>
   <h1>Prefill that makes <span>upgrades optional.</span></h1>
+  <p class="tagline">512K context is a working floor, not an expensive dream.</p>
   <p class="sub">Two tuned Strata presets for Qwen3.8-Flash-Next IQ3_S on one RTX 4060 Ti 16 GB <b>plus 64 GB DDR5</b>. The <b>512k speed preset</b> does <b>2,100 t/s</b> at 40k; the separate <b>1M preset</b> holds a full <b>1,000,000-token</b> prompt without breaking. Configs, raw curves and pitfalls — free.</p>
   <div class="cta">
     <a class="btn" href="#downloads">Get the presets</a>
