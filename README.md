@@ -4,7 +4,7 @@
 
 ### **Prefill that makes upgrades optional.**
 
-Qwen3.8-Flash-Next 125B MoE on one RTX 4060 Ti 16 GB **and 64 GB DDR5**. The
+**Qwen3.8 Flash Next IQ3_S (ISTA-DASLab), 125B MoE** on one RTX 4060 Ti 16 GB **and 64 GB DDR5**. The
 **512k speed preset** hits ~2,100 t/s at 40k; the separate **1M preset** holds
 1,000,000 tokens without breaking. Two presets, two numbers — not both at 2,100.
 
@@ -55,7 +55,7 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
 | GPU | RTX 4060 Ti 16 GB (one card, VRAM OC via `Strata VRAM OC 10827.bat`) |
 | Other apps | **iGPU is primary.** Browsers, Electron and desktop apps are pinned to the integrated GPU via `HKCU\Software\Microsoft\DirectX\UserGpuPreferences` (`GpuPreference=1`). The 4060 Ti's VRAM belongs to Strata alone — that is part of how 14.7/16 GB stays available for experts. |
 | System RAM | **64 GB DDR5 — required** |
-| Model | Qwen3.8-Flash-Next GSQ-RCO IQ3_S, 125B MoE / 6B active |
+| Model | **Qwen3.8 Flash Next IQ3_S — ISTA-DASLab (GSQ-RCO), 125B MoE / 6B active** |
 | Draft | DFlash2 tuned pack `qwen3.8-flash-next-dflash2.strata1.q4_0-selq4.pack` |
 | Serving | Control 0.1.62 → engine 0.1.62, port 8080 |
 | KV | `int8`, `--kv-resident 32768` |
