@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Strata 4060 Ti — 2,100 t/s prefill on one consumer GPU</title>
+<style>
+  :root{
+    --bg:#0a0d12; --panel:#111820; --card:#151d27; --line:#26313d;
+    --ink:#e8eef5; --dim:#93a3b5; --green:#3fb950; --cyan:#39c5cf; --amber:#e3b341;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+  a{color:var(--cyan);text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{border-bottom:1px solid var(--line);padding:18px 0}
+  header .wrap{display:flex;justify-content:space-between;align-items:center}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:19px}
+  .brand b{color:var(--green)}
+  nav a{margin-left:20px;color:var(--dim);font-size:14px}
+  .hero{padding:72px 0 40px;text-align:center}
+  .eyebrow{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:5px 14px;color:var(--dim);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+  h1{font-size:clamp(34px,6vw,62px);line-height:1.05;margin:22px 0 14px;letter-spacing:-.04em}
+  h1 span{background:linear-gradient(90deg,var(--green),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--dim);max-width:720px;margin:0 auto 30px;font-size:18px}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;background:var(--green);color:#06140a;padding:12px 22px;border-radius:8px;font-weight:700}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .btn:hover{text-decoration:none;filter:brightness(1.08)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:44px 0 10px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .stat .n{font-size:30px;font-weight:800;color:var(--green);letter-spacing:-.03em}
+  .stat .l{color:var(--dim);font-size:13px;margin-top:4px}
+  section{padding:54px 0;border-top:1px solid var(--line)}
+  h2{font-size:30px;letter-spacing:-.03em;margin:0 0 8px}
+  .lead{color:var(--dim);max-width:760px;margin:0 0 28px}
+  .shot{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;overflow:hidden}
+  .shot img{width:100%;display:block;border-radius:8px}
+  figcaption{color:var(--dim);font-size:13px;margin-top:10px;text-align:center}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+  figure img{width:100%;display:block;border-radius:8px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h3{margin:0 0 8px;font-size:18px}
+  .card p{color:var(--dim);font-size:14px;margin:0 0 16px}
+  .tag{display:inline-block;background:#1b2733;border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:12px;color:var(--dim);margin-right:6px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600} td.num{font-variant-numeric:tabular-nums;font-weight:700;color:var(--green)}
+  .warn{border-left:3px solid var(--amber);background:#1c180c;padding:14px 18px;border-radius:0 8px 8px 0;color:#e8d9a8;font-size:14px}
+  footer{border-top:1px solid var(--line);padding:30px 0 60px;color:var(--dim);font-size:13px}
+  @media(max-width:760px){.stats,.cards,.grid2{grid-template-columns:1fr}.hero{padding-top:44px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand">Strata<b>/</b>4060Ti</div>
+  <nav><a href="#presets">presets</a><a href="#curves">curves</a><a href="#method">method</a><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">GitHub ↗</a></nav>
+</div></header>
+
+<div class="wrap hero">
+  <div class="eyebrow">one GPU · 64 GB RAM · 125B MoE</div>
+  <h1>Prefill that makes <span>upgrades optional.</span></h1>
+  <p class="sub">Two tuned Strata presets for Qwen3.8-Flash-Next IQ3_S on a single RTX 4060 Ti 16 GB. Up to <b>2,100 t/s</b> at 40k, and a full <b>1,000,000-token</b> prompt that does not break. Configs, raw curves and the pitfalls — all free.</p>
+  <div class="cta">
+    <a class="btn" href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets">Get the presets</a>
+    <a class="btn ghost" href="#curves">See the curves</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="n">2,105</div><div class="l">peak prefill t/s @ 40k</div></div>
+    <div class="stat"><div class="n">2,100</div><div class="l">median prefill t/s @ 40k</div></div>
+    <div class="stat"><div class="n">1M</div><div class="l">tokens, no break</div></div>
+    <div class="stat"><div class="n">1×</div><div class="l">RTX 4060 Ti 16 GB</div></div>
+  </div>
+</div>
+
+<section id="presets"><div class="wrap">
+  <h2>The real monitor, not a slide</h2>
+  <p class="lead">Strata's own panel: 512K context, engine 0.1.62, 2,077 t/s average and 2,105 peak across three fresh 40k requests. 14.7/16 GB VRAM used, 3,968 experts cached.</p>
+  <div class="shot"><img src="strata-monitor-512k.png" alt="Strata monitor showing 2077 t/s prefill average and 2105 peak on a 4060 Ti"><figcaption>Strata Monitor — preset <code>strata-512k-routed</code>, three fresh 40,989-token prompts.</figcaption></div>
+</div></section>
+
+<section id="curves"><div class="wrap">
+  <h2>Two presets, two jobs</h2>
+  <p class="lead">The speed preset trades context for throughput. The 1M preset trades speed for a window nobody else publishes on this card.</p>
+  <div class="grid2">
+    <figure><img src="ramp-512k.svg" alt="512k routed prefill curve"><figcaption><b>512k routed</b> — 2,100 t/s @40k → 1,648 t/s @500k</figcaption></figure>
+    <figure><img src="ramp-1m.svg" alt="1M h4 prefill curve"><figcaption><b>1M h4</b> — 1,686 t/s @40k → 1,254 t/s @1M</figcaption></figure>
+  </div>
+  <div class="cards" style="margin-top:22px">
+    <div class="card"><h3>strata-512k-routed</h3><p>524,288-token window. ring512 + routed stream. The speed champion.</p><span class="tag">2,100 t/s</span><span class="tag">512K</span></div>
+    <div class="card"><h3>strata-1m-h4</h3><p>1,048,576-token window. Tail-loan 0 + headroom 4 GiB. The capacity champion.</p><span class="tag">1,254 t/s</span><span class="tag">1M</span></div>
+    <div class="card"><h3>Download everything</h3><p>Templates with path placeholders, a renderer, the realistic corpus benchmark and every raw JSONL.</p><a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets/tree/main/presets">presets ↗</a> · <a href="https://github.com/herbaristus123-prog/strata-4060ti-prefill-presets/tree/main/results">results ↗</a></div>
+  </div>
+</div></section>
+
+<section id="method"><div class="wrap">
+  <h2>The part people skip</h2>
+  <p class="lead">This is not a GPU-only trick. The 125B expert set lives in pinned system memory; VRAM is a hot cache. Replace the RAM and the numbers disappear.</p>
+  <div class="warn"><b>Required system:</b> RTX 4060 Ti 16 GB <u>plus 64 GB DDR5 dual channel</u>. With 32 GB the IQ3_S weights spill to the SSD tier and none of these speeds are reachable. Engine and Control 0.1.62, DFlash2 draft pack, KV int8, vision on CPU, abliteração on, temperature 1.</div>
+  <table style="margin-top:26px">
+    <tr><th>Measure</th><th>512k routed</th><th>1M h4</th></tr>
+    <tr><td>40k</td><td class="num">2,100.5 t/s</td><td class="num">1,686.4 t/s</td></tr>
+    <tr><td>200–263k</td><td class="num">1,935.8 t/s</td><td class="num">1,767.8 t/s</td></tr>
+    <tr><td>500k</td><td class="num">1,647.7 t/s</td><td class="num">1,573.0 t/s</td></tr>
+    <tr><td>1,000,000</td><td>—</td><td class="num">1,253.7 t/s</td></tr>
+  </table>
+  <p class="lead" style="margin-top:24px">Fresh nonce-unique realistic prompts, engine timing, medians reported. Full method, discarded levers and the crash that cost a day are in the repo.</p>
+</div></section>
+
+<footer><div class="wrap">
+  Not a world-record claim. A reproducible, documented result on consumer hardware. MIT licensed configs; model weights not included.
+</div></footer>
+</body>
+</html>

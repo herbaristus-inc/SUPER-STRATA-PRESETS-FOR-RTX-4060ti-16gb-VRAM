@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="100%">
+<rect width="900" height="420" fill="#0d1117"/>
+<text x="450.0" y="34" fill="#e6edf3" font-size="20" font-family="sans-serif" text-anchor="middle" font-weight="bold">512k routed — prefill vs. prompt length</text>
+<line x1="70" y1="350.0" x2="870" y2="350.0" stroke="#30363d" stroke-width="1"/>
+<text x="60" y="354.0" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="end">1000</text>
+<line x1="70" y1="301.7" x2="870" y2="301.7" stroke="#30363d" stroke-width="1"/>
+<text x="60" y="305.7" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="end">1200</text>
+<line x1="70" y1="253.3" x2="870" y2="253.3" stroke="#30363d" stroke-width="1"/>
+<text x="60" y="257.3" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="end">1400</text>
+<line x1="70" y1="205.0" x2="870" y2="205.0" stroke="#30363d" stroke-width="1"/>
+<text x="60" y="209.0" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="end">1600</text>
+<line x1="70" y1="156.7" x2="870" y2="156.7" stroke="#30363d" stroke-width="1"/>
+<text x="60" y="160.7" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="end">1800</text>
+<line x1="70" y1="108.3" x2="870" y2="108.3" stroke="#30363d" stroke-width="1"/>
+<text x="60" y="112.3" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="end">2000</text>
+<line x1="70" y1="60.0" x2="870" y2="60.0" stroke="#30363d" stroke-width="1"/>
+<text x="60" y="64.0" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="end">2200</text>
+<text x="103.7" y="375" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="middle">40k (3 runs, median)</text>
+<text x="568.0" y="375" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="middle">200k</text>
+<text x="731.9" y="375" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="middle">350k</text>
+<text x="836.3" y="375" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="middle">500k</text>
+<polyline points="103.7,84.0 568.0,123.8 731.9,159.5 836.3,193.5" fill="none" stroke="#3fb950" stroke-width="3"/>
+<circle cx="103.7" cy="84.0" r="5" fill="#3fb950" stroke="#0d1117" stroke-width="2"/>
+<text x="103.7" y="70.0" fill="#e6edf3" font-size="13" font-family="sans-serif" text-anchor="middle" font-weight="bold">2,100</text>
+<circle cx="568.0" cy="123.8" r="5" fill="#3fb950" stroke="#0d1117" stroke-width="2"/>
+<text x="568.0" y="109.8" fill="#e6edf3" font-size="13" font-family="sans-serif" text-anchor="middle" font-weight="bold">1,936</text>
+<circle cx="731.9" cy="159.5" r="5" fill="#3fb950" stroke="#0d1117" stroke-width="2"/>
+<text x="731.9" y="145.5" fill="#e6edf3" font-size="13" font-family="sans-serif" text-anchor="middle" font-weight="bold">1,788</text>
+<circle cx="836.3" cy="193.5" r="5" fill="#3fb950" stroke="#0d1117" stroke-width="2"/>
+<text x="836.3" y="179.5" fill="#e6edf3" font-size="13" font-family="sans-serif" text-anchor="middle" font-weight="bold">1,648</text>
+<text x="450.0" y="405" fill="#8b949e" font-size="12" font-family="sans-serif" text-anchor="middle">prompt tokens (log scale) → prefill t/s · fresh nonce prompts</text>
+</svg>
