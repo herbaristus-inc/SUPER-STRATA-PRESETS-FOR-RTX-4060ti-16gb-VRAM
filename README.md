@@ -15,7 +15,7 @@
 [![KV int8](https://img.shields.io/badge/KV-int8-e3b341)](presets/)
 [![license MIT](https://img.shields.io/badge/license-MIT-8b949e)](LICENSE)
 
-**[Live page](docs/index.html)** · **[Recovery](recovery/RECOVERY.md)** · **[Downloads](#downloads)** · **[Presets](presets/)** · **[Launchers](launchers/)** · **[Raw curves](results/)** · **[Pitfalls](PITFALLS.md)** · **[Related numbers](RELATED.md)** · **[Community results](COMMUNITY.md)** · **[Notes for Strata](STRATA-NOTES.md)**
+**[Live page](docs/index.html)** · **[For your agent](#give-this-to-your-agent)** · **[Recovery](recovery/RECOVERY.md)** · **[Downloads](#downloads)** · **[Presets](presets/)** · **[Launchers](launchers/)** · **[Raw curves](results/)** · **[Pitfalls](PITFALLS.md)** · **[Related numbers](RELATED.md)** · **[Community results](COMMUNITY.md)** · **[Notes for Strata](STRATA-NOTES.md)**
 
 <img src="assets/strata-monitor-512k.png" alt="Strata monitor on the 512k preset: 2077 t/s average, 2105 peak, 512K context, RTX 4060 Ti" width="900">
 
@@ -99,6 +99,26 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
 - **[`recovery/RECOVERY.md`](recovery/RECOVERY.md)** + **[`verify.ps1`](verify.ps1)** —
   rebuild the whole stack after a clean Windows install; agent/API checklist included.
 - **[`MODEL.md`](MODEL.md)** — why ISTA-DASLab GSQ-RCO IQ3_S, the near-BF16 quant.
+
+## Give this to your agent
+
+If you use an AI agent with shell access (WorkBuddy, Claude Code, Codex, OpenClaw… anything
+that can run PowerShell on this machine), paste this block into it after cloning the repo:
+
+```text
+This machine just got a clean Windows install. In this repo, open recovery/RECOVERY.md and
+execute it step by step: run .\verify.ps1 first, then follow the steps in order — Windows
+baseline (iGPU primary, XMP DDR5-6000, nvidia-smi -lmc 10827 at login), rebuild the boot
+unlock pendrive with boot-unlock\MAKE-PENDRIVE.bat, install Python 3.12 + CUDA 13 runtime,
+Strata engine and Control 0.1.62, render both presets with tools\render_preset.py, launch
+the 512k preset, and finish with the Step 7 agent checklist. Stop and report at the first
+failed check; never guess around a failed hash. Ask me before downloading the ~84 GB of
+model weights.
+```
+
+It is a real prompt we tested on this machine — the same recovery path that rebuilds the
+author's rig after a disk loss. No human steps needed until the pendrive reboot and the
+84 GB model download, which are marked in the file.
 
 ## What is in this repo
 
