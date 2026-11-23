@@ -25,8 +25,10 @@ git log -1 --oneline
   `HKCU\Software\Microsoft\DirectX\UserGpuPreferences` → `GpuPreference=1` so the 4060 Ti's
   VRAM stays available to Strata.
 - Re-enable the XMP profile in BIOS: **DDR5-6000**. JEDEC 4800 is not the measured machine.
-- VRAM OC at login: `nvidia-smi -lmc 10827`. Verify under load: SM 2865–2880 MHz,
-  VRAM 10827 MHz, power limit 165 W. 198 W buys nothing.
+- **Optional** VRAM OC at login: `nvidia-smi -lmc 10827` (this card's measured value;
+  a suggestion, not a requirement). Skipping it works at stock clocks, just slower. If you
+  apply it, verify stability under load first: SM 2865–2880 MHz, VRAM 10827 MHz, power
+  limit 165 W, no engine crashes on a long prompt. 198 W buys nothing.
 
 ## Step 2 — boot pendrive
 

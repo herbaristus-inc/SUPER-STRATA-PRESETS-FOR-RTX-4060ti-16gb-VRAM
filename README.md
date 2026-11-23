@@ -69,7 +69,7 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
 
 | Part | Value |
 |---|---|
-| GPU | RTX 4060 Ti 16 GB (one card, VRAM OC via `Strata VRAM OC 10827.bat`) |
+| GPU | RTX 4060 Ti 16 GB (one card; the memory clock was locked above stock during measurement — **optional, see the note below**) |
 | Other apps | **iGPU is primary.** Browsers, Electron and desktop apps are pinned to the integrated GPU via `HKCU\Software\Microsoft\DirectX\UserGpuPreferences` (`GpuPreference=1`). The 4060 Ti's VRAM belongs to Strata alone — that is part of how 14.7/16 GB stays available for experts. |
 | System RAM | **64 GB DDR5 — required** |
 | Model | **Qwen3.8 Flash Next IQ3_S — ISTA-DASLab (GSQ-RCO), 125B MoE / 6B active** |
@@ -79,6 +79,20 @@ these speeds no matter which 16 GB card you put in the slot. At 1M, the `int8` K
 | Vision | on, CPU tower (`vision.gpu: false`) |
 | Abliteration | `--control-vector-scaled` + speed projection, layers 4–44 |
 | Sampling | temperature 1, no `max_tokens` in preset |
+
+### OC suggestion for RTX 4060 Ti 16 GB
+
+The numbers above were measured with the card's memory clock locked above stock
+(`nvidia-smi -lmc 10827`, applied at login by a Startup `.bat`). **This is a suggestion, not
+a requirement, and it is not part of the presets.** On this specific card it is a gentle
+offset and it ran stable at 165 W for months. Other cards are other silicon:
+
+- Try it only if you accept the risk — an unstable memory clock shows up as artifacts,
+  crashes or corrupted inference, never as a silent slowdown.
+- Verify stability under load before trusting any benchmark: watch for engine crashes and
+  check `nvidia-smi --query-gpu=clocks.mem,power.draw --format=csv` while a long prompt runs.
+- If your card refuses it, run stock. The presets and every tuning lesson here still apply;
+  expect somewhat lower prefill in proportion to memory bandwidth.
 
 ---
 
@@ -108,7 +122,8 @@ that can run PowerShell on this machine), paste this block into it after cloning
 ```text
 This machine just got a clean Windows install. In this repo, open recovery/RECOVERY.md and
 execute it step by step: run .\verify.ps1 first, then follow the steps in order — Windows
-baseline (iGPU primary, XMP DDR5-6000, nvidia-smi -lmc 10827 at login), rebuild the boot
+baseline (iGPU primary, XMP DDR5-6000; the optional memory-clock lock from the OC
+suggestion section ONLY if I approve it for my card), rebuild the boot
 unlock pendrive with boot-unlock\MAKE-PENDRIVE.bat, install Python 3.12 + CUDA 13 runtime,
 Strata engine and Control 0.1.62, render both presets with tools\render_preset.py, launch
 the 512k preset, and finish with the Step 7 agent checklist. Stop and report at the first
